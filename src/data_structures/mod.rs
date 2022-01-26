@@ -1,5 +1,8 @@
 #![allow(dead_code)]
 
+use std::cell::RefCell;
+use std::rc::Rc;
+
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
     pub val: i32,
@@ -10,6 +13,24 @@ impl ListNode {
     #[inline]
     pub fn new(val: i32) -> Self {
         ListNode { next: None, val }
+    }
+}
+
+#[derive(Debug, PartialEq, Eq)]
+pub struct TreeNode {
+    pub val: i32,
+    pub left: Option<Rc<RefCell<TreeNode>>>,
+    pub right: Option<Rc<RefCell<TreeNode>>>,
+}
+
+impl TreeNode {
+    #[inline]
+    pub fn new(val: i32) -> Self {
+        TreeNode {
+            val,
+            left: None,
+            right: None,
+        }
     }
 }
 
@@ -54,9 +75,17 @@ pub mod linked_list_utils {
 
         while let Some(n) = head {
             v.push(n.val);
-            head = n.next; 
+            head = n.next;
         }
 
         v
     }
 }
+
+// TODO: Create a mod for tree_utils:
+// Functions to create:
+// pub fn create_binary_tree_from_vec(nums: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>>
+// pub fn in_order(node: Option<Rc<RefCell<TreeNode>>>, result: &mut Vec<i32>)
+// pub fn pre_order(node: Option<Rc<RefCell<TreeNode>>>, result: &mut Vec<i32>)
+// pub fn post_order(node: Option<Rc<RefCell<TreeNode>>>, result: &mut Vec<i32>)
+// pub fn level_order(node: Option<Rc<RefCell<TreeNode>>>, result: &mut Vec<i32>)

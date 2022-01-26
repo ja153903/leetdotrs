@@ -1,3 +1,4 @@
+mod daily;
 mod data_structures;
 mod top_liked_questions;
 
