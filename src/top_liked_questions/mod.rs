@@ -4,3 +4,4 @@ mod merge_intervals;
 mod number_of_islands;
 mod trapping_rain_water;
 mod two_sum;
+mod valid_parens;
