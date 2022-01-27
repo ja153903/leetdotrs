@@ -1,4 +1,5 @@
 mod add_two_numbers;
+mod longest_substr_without_repeating_chars;
 mod lru_cache;
 mod merge_intervals;
 mod number_of_islands;
